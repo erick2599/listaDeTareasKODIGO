@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/style.css">
+    <title>Sistema de Gestión de Tareas</title>
+    <!-- MUEVE TU SCRIPT AQUÍ CON EL ATRIBUTO DEFER -->
+    <script type="module" defer src="/src/main.ts"></script>
+    <button id="theme-toggle" class="btn-theme" aria-label="Cambiar modo">🌙 Modo Oscuro</button>
+  </head>
+
+
+<body>
+  <div class="app-container">
+    <header>
+      <h1>Gestión de Tareas</h1>
+    </header>
+
+    <main class="main-content">
+      <!-- Formulario de creación / edición -->
+      <section class="form-section">
+        <form id="task-form">
+          <div class="form-group">
+            <label for="form-title">Título *</label>
+            <input type="text" id="form-title" name="title" required maxlength="50">
+          </div>
+          <div class="form-group">
+            <label for="form-description">Descripción</label>
+            <textarea id="form-description" name="description" rows="3" required></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="form-category">Categoría</label>
+              <input type="text" id="form-category" name="category" required>
+            </div>
+            <div class="form-group">
+              <label for="form-priority">Prioridad</label>
+              <select id="form-priority" name="priority">
+                <option value="baja">Baja</option>
+                <option value="media">Media</option>
+                <option value="alta">Alta</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" id="submit-btn">Guardar Tarea</button>
+        </form>
+      </section>
+
+      <!-- Panel de Filtros y Búsqueda -->
+      <!-- Panel de Filtros, Búsqueda y Estadísticas -->
+      <section class="filter-section">
+        <!-- Bloque de Contadores Dinámicos -->
+        <div class="task-stats">
+          <div class="stat-card">Totales: <span id="stats-total">0</span></div>
+          <div class="stat-card">Pendientes: <span id="stats-pending">0</span></div>
+          <div class="stat-card">Completadas: <span id="stats-completed">0</span></div>
+          <button id="btn-clear-completed" class="btn-danger-outline">Limpiar Completadas</button>
+        </div>
+
+        <div class="search-bar">
+          <input type="text" id="search-input" placeholder="Buscar por título...">
+        </div>
+        <div class="filter-controls">
+          <select id="filter-status">
+            <option value="todas">Todos los estados</option>
+            <option value="pendiente">Pendientes</option>
+            <option value="completada">Completadas</option>
+          </select>
+          <select id="filter-priority">
+            <option value="todas">Todas las prioridades</option>
+            <option value="baja">Baja</option>
+            <option value="media">Media</option>
+            <option value="alta">Alta</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- Lista de Tareas -->
+      <section class="list-section">
+        <div id="task-list"></div>
+      </section>
+    </main>
+  </div>
+</body>
+
+</html>

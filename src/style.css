@@ -1,0 +1,277 @@
+:root {
+  --primary: #4f46e5;
+  --bg-body: #f8fafc;
+  --bg-card: #ffffff;
+  --text-main: #1e293b;
+  --border-color: #e2e8f0;
+  --low-priority: #10b981;
+  --medium-priority: #f59e0b;
+  --high-priority: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  line-height: 1.5;
+  padding: 2rem 1rem;
+}
+
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+form, .filter-section, .task-card {
+  background: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1nav-rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+button {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+#submit-btn {
+  background: var(--primary);
+  color: white;
+  width: 100%;
+}
+
+.filter-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.filter-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.task-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  border-left: 6px solid var(--border-color);
+}
+
+.task-card.priority-baja { border-left-color: var(--low-priority); }
+.task-card.priority-media { border-left-color: var(--medium-priority); }
+.task-card.priority-alta { border-left-color: var(--high-priority); }
+
+.task-card.completed {
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+
+.task-tags {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.task-tags span {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  background: #f1f5f9;
+}
+
+.task-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.empty-message {
+  text-align: center;
+  color: #64748b;
+  padding: 2rem;
+}
+
+/* Diseño responsivo sin hacks */
+@media (max-width: 600px) {
+  .form-row, .filter-controls, .task-card {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+  }
+  .task-actions {
+    width: 100%;
+    margin-top: 1rem;
+    justify-content: space-between;
+  }
+}
+
+/* Panel de Estadísticas y Contadores */
+.task-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.stat-card {
+  background: #f1f5f9;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.stat-card span {
+  color: var(--primary);
+  font-size: 1rem;
+}
+
+/* Botón de limpiar completadas */
+.btn-danger-outline {
+  background: transparent;
+  border: 1px solid var(--high-priority);
+  color: var(--high-priority);
+  margin-left: auto; /* Lo empuja a la derecha */
+}
+
+.btn-danger-outline:hover {
+  background: var(--high-priority);
+  color: white;
+}
+
+/* Transición suave para tareas reactivas */
+.task-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Estado completado suave */
+.task-card.completed {
+  opacity: 0.45;
+  background: #f8fafc;
+  border-left-color: #cbd5e1 !important; /* Apaga el color de la prioridad */
+}
+
+.task-card.completed .task-content h3,
+.task-card.completed .task-content p {
+  text-decoration: line-through;
+  color: #64748b;
+  transition: color 0.3s ease;
+}
+
+@media (max-width: 600px) {
+  .btn-danger-outline {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* --- CONFIGURACIÓN DE MODOS (CLARO / OSCURO) --- */
+:root {
+  --primary: #4f46e5;
+  --bg-body: #f8fafc;
+  --bg-card: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --low-priority: #10b981;
+  --medium-priority: #f59e0b;
+  --high-priority: #ef4444;
+  --bg-stat: #f1f5f9;
+}
+
+/* Variables cuando el Modo Oscuro está activo */
+[data-theme="dark"] {
+  --bg-body: #0f172a;
+  --bg-card: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-color: #334155;
+  --bg-stat: #334155;
+}
+
+/* Transición global para que el cambio de color sea suave */
+body, form, .filter-section, .task-card, input, select, textarea, .stat-card {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Estilo para los textos mutados del tema oscuro */
+[data-theme="dark"] .task-card.completed .task-content h3,
+[data-theme="dark"] .task-card.completed .task-content p {
+  color: #475569;
+}
+
+/* Ajustes de componentes individuales */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.btn-theme {
+  background: var(--bg-stat);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+}
+
+.stat-card {
+  background: var(--bg-stat);
+  color: var(--text-main);
+}
+
+/* Actualización para inputs en modo oscuro */
+input, textarea, select {
+  background: var(--bg-card);
+  color: var(--text-main);
+}
